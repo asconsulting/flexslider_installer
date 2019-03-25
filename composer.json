@@ -27,7 +27,7 @@
         }
     },
     "extra": {
-	    "contao-manager-plugin": "FlexSlider\\Installer\\ContaoManager\\InstallerPlugin",
+	    "contao-manager-plugin": "FlexSlider\\Installer\\ContaoManager\\Plugin",
         "contao": {
             "sources": {
                 "system/modules/flexslider_installer": "system/modules/flexslider_installer"
