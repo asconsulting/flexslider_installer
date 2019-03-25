@@ -51,7 +51,7 @@ class SymlinkCommandListener
 		if (file_put_contents($this->rootDir . '/files/flexslider-master.zip', fopen("https://github.com/woocommerce/FlexSlider/archive/master.zip", 'r')) !== false) {
 			$zip = new \ZipArchive;
 			if ($zip->open($this->rootDir . '/files/flexslider-master.zip') === TRUE) {
-				$zip->extractTo($this->rootDir . '/files/flexslider/');
+				$zip->extractTo($this->rootDir . '/files/flexslider/', array('FlexSlider-master'));
 				$zip->close();
 				$boolSuccess = true;
 			}
@@ -64,10 +64,9 @@ class SymlinkCommandListener
 			$strComposer = file_get_contents($this->rootDir ."/composer.json");
 			$objJson = json_decode($strComposer);
 			if ($objJson) {
-				unset($objJson->require->{'asconsulting/flexslider_installer'});
-				file_put_contents($this->rootDir ."/composer.json", json_encode($objJson));
+			//	unset($objJson->require->{'asconsulting/flexslider_installer'});
+			//	file_put_contents($this->rootDir ."/composer.json", json_encode($objJson));
 			}
-			
 		}
     }
 }
