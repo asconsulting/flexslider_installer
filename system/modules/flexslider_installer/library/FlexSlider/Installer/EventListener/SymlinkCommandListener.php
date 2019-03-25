@@ -61,8 +61,7 @@ class SymlinkCommandListener
 		}
 
 		if ($boolSuccess) {
-			(new Filesystem())->mkdir($this->rootDir . '/web/flexslider');
-			SymlinkUtil::symlink('files/flexslider', 'web/flexslider', $this->rootDir);
+			file_put_contents($this->rootDir .'/files/flexslider/.public', '');
 		}
     }
 }
