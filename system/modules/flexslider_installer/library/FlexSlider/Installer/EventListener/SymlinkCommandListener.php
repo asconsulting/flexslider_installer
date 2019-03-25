@@ -47,21 +47,18 @@ class SymlinkCommandListener
             return;
         }
 		
-		$boolSuccess = false;
 		if (file_put_contents($this->rootDir . '/files/flexslider-master.zip', fopen("https://github.com/woocommerce/FlexSlider/archive/master.zip", 'r')) !== false) {
 			$zip = new \ZipArchive;
 			if ($zip->open($this->rootDir . '/files/flexslider-master.zip') === TRUE) {
 				$zip->extractTo($this->rootDir . '/var/cache/flexslider/');
 				$zip->close();
-				rename($this->rootDir .'/var/cache/flexslider/FlexSlider-master', $this->rootDir .'/files/flexslider');
-				unlink($this->rootDir . '/var/cache/flexslider');
-				unlink($this->rootDir . '/files/flexslider-master.zip');
-				$boolSuccess = true;
+				
+				$objFilesystem = new Filesystem();
+				$objFilesystem->rename($this->rootDir .'/var/cache/flexslider/FlexSlider-master', $this->rootDir .'/files/flexslider');
+				$objFilesystem->remove($this->rootDir . '/var/cache/flexslider');
+				$objFilesystem->remove($this->rootDir . '/files/flexslider-master.zip');
+				file_put_contents($this->rootDir .'/files/flexslider/.public', '');
 			}
-		}
-
-		if ($boolSuccess) {
-			file_put_contents($this->rootDir .'/files/flexslider/.public', '');
 		}
     }
 }
