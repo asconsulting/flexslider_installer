@@ -53,7 +53,7 @@ class SymlinkCommandListener
 			if ($zip->open($this->rootDir . '/files/flexslider-master.zip') === TRUE) {
 				$zip->extractTo($this->rootDir . '/var/cache/flexslider/');
 				$zip->close();
-				rename($this->rootDir .'/var/cache/flexslider/Flexslider-master', $this->rootDir .'/files/flexslider');
+				rename($this->rootDir .'/var/cache/flexslider/FlexSlider-master', $this->rootDir .'/files/flexslider');
 				unlink($this->rootDir . '/var/cache/flexslider');
 				unlink($this->rootDir . '/files/flexslider-master.zip');
 				$boolSuccess = true;
