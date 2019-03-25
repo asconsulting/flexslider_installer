@@ -27,11 +27,13 @@
         }
     },
     "extra": {
-	    "contao-manager-plugin": "FlexSlider\\Installer\\ContaoManager\\Plugin",
         "contao": {
             "sources": {
                 "system/modules/flexslider_installer": "system/modules/flexslider_installer"
-            }
+            },
+            "runonce": [
+                "system/modules/flexslider_installer/config/install.php"
+            ]
         }
     },
     "minimum-stability": "dev"
