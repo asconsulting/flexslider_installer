@@ -1,0 +1,38 @@
+{
+    "name":"asconsulting/flexslider_installer",
+    "description":"Downloads and installs FlexSlider by Woocommerce to Contao 4+",
+    "homepage": "https://andrewstevens.consulting",
+    "keywords":["contao", "flexslider", "install"],
+    "type":"contao-module",
+    "license":"LGPL-3.0-or-later",
+    "authors":[
+        {
+            "name":"Andrew Stevens",
+            "homepage":"https://andrewstevens.consulting"
+        }
+    ],
+    "require":{
+        "php": "~5.4 || ~7.0",
+        "contao/core-bundle": "^3.5.2 || ~4.4",
+        "contao-community-alliance/composer-plugin": "~2.4 || ~3.0"
+    },
+    "require-dev": {
+        "contao/manager-plugin": "^2.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "FlexSlider\\": [
+                "system/modules/flexslider_installer/library"
+            ]
+        }
+    },
+    "extra": {
+	    "contao-manager-plugin": "FlexSlider\\Installer\\ContaoManager\\InstallerPlugin",
+        "contao": {
+            "sources": {
+                "system/modules/flexslider_installer": "system/modules/flexslider_installer"
+            }
+        }
+    },
+    "minimum-stability": "dev"
+}
