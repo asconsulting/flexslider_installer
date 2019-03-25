@@ -51,10 +51,12 @@ class SymlinkCommandListener
 		if (file_put_contents($this->rootDir . '/files/flexslider-master.zip', fopen("https://github.com/woocommerce/FlexSlider/archive/master.zip", 'r')) !== false) {
 			$zip = new \ZipArchive;
 			if ($zip->open($this->rootDir . '/files/flexslider-master.zip') === TRUE) {
-				$zip->extractTo($this->rootDir . '/files/flexslider/', array('FlexSlider-master'));
+				$zip->extractTo($this->rootDir . '/var/cache/flexslider/');
 				$zip->close();
-				$boolSuccess = true;
+				rename($this->rootDir .'/var/cache/flexslider/Flexslider-master', $this->rootDir .'/files/flexslider');
+				unlink($this->rootDir . '/var/cache/flexslider');
 				unlink($this->rootDir . '/files/flexslider-master.zip');
+				$boolSuccess = true;
 			}
 		}
 
