@@ -57,8 +57,17 @@ class SymlinkCommandListener
 			}
 		}
 
-		(new Filesystem())->mkdir($this->rootDir . 'web/flexslider');
-
-        SymlinkUtil::symlink('files/flexslider', 'web/flexslider', $this->rootDir);
+		if ($boolSuccess) {
+			(new Filesystem())->mkdir($this->rootDir . 'web/flexslider');
+			SymlinkUtil::symlink('files/flexslider', 'web/flexslider', $this->rootDir);
+			
+			$strComposer = file_get_contents($this->rootDir ."composer.json");
+			$objJson = json_decode($strComposer);
+			if ($objJson) {
+				unset($objJson->require->{'asconsulting/flexslider_installer'});
+				file_put_contents($this->rootDir ."composer.json", json_encode($objJson));
+			}
+			
+		}
     }
 }
